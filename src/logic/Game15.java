@@ -136,7 +136,7 @@ public class Game15 {
 			isSolvable = true;
 		}
 		
-		System.out.println("number of inversions: " + numberOfInversions);
+//		System.out.println("number of inversions: " + numberOfInversions);
 		return isSolvable;
 	}
 
@@ -158,12 +158,6 @@ public class Game15 {
 		System.out.println();
 	}
 
-//	public static Game15 newGame() {
-//		Game15 game = new Game15();
-//		
-//		return game;
-//
-//	}
 
 	public int[] getTiles() {
 		return tiles;

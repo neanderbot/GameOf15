@@ -1,7 +1,6 @@
 package application;
 
 import gui.Game15MainFrame;
-import logic.Game15;
 
 public class GameOf15 {
 

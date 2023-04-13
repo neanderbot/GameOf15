@@ -1,19 +1,11 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.print.Pageable;
 
-import javax.swing.ButtonModel;
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 public class Game15MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -23,23 +15,38 @@ public class Game15MainFrame extends JFrame {
 	private Board board;
 	private ButtonPanel buttonPanel;
 
+	private InfoPanel infoPanel;
+
 	public Game15MainFrame() {
 		super("Game of 15");
 		board = new Board();
 		buttonPanel = new ButtonPanel();
+		infoPanel = new InfoPanel();
 		this.setLayout(new BorderLayout());
 
-		add(board, BorderLayout.CENTER);
+		add(board, BorderLayout.PAGE_START);
+		add(infoPanel, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.PAGE_END);
 
+		setChrono();
 		setReshuffle();
+		setCounterPanelInBoard();
 
 		this.setPreferredSize(new Dimension(width, heigth));
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.pack();
 		this.setVisible(true);
+
+	}
+
+	private void setCounterPanelInBoard() {
+		board.setCounter(infoPanel.getCounterPanel());
+	}
+
+	private void setChrono() {
+		infoPanel.setChrono();
 	}
 
 	private void setReshuffle() {
@@ -49,6 +56,9 @@ public class Game15MainFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				board.reshulffle();
+				infoPanel.resetCounter();
+				infoPanel.restartChrono();
+
 			}
 
 		});
