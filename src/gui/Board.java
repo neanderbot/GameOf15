@@ -32,7 +32,7 @@ public class Board extends JPanel {
 
 	public Board() {
 
-		game = new Game15();
+//		game = new Game15();
 		numberOfTiles = Game15.getDimension() * Game15.getDimension();
 
 		setLayout(new BorderLayout());
@@ -45,6 +45,10 @@ public class Board extends JPanel {
 		setBackground(Color.black);
 		setOpaque(true);
 
+	}
+
+	public void setGame(Game15 game) {
+		this.game = game;
 		addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -53,15 +57,20 @@ public class Board extends JPanel {
 				int y = e.getY();
 				int index = getIndex(x, y);
 				game.move(index);
-				G15Colour.tileColour = game.isSolved() ? G15Colour.tileColourFinished : G15Colour.tileColourPlaying;
-
-				counterPanel.addClick();
+//				G15Colour.tileColour = game.isSolved() ? G15Colour.tileColourFinished : G15Colour.tileColourPlaying;
+				
+				if(game.isSolved()) {
+					G15Colour.tileColour = G15Colour.tileColourFinished;
+					counterPanel.setFinishedColour();
+				} else {
+					G15Colour.tileColour = G15Colour.tileColourPlaying;
+					counterPanel.addClick();
+				}
 
 				repaint();
 			}
 
 		});
-
 	}
 
 	public int getIndex(int x, int y) {

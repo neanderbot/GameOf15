@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import logic.Game15;
+
 public class TimerPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -20,6 +22,7 @@ public class TimerPanel extends JPanel {
 	String timeFormat = "%02d:%02d\n";
 	String time;
 	JLabel chrono;
+	Game15 game;
 
 	public TimerPanel() {
 
@@ -82,11 +85,16 @@ public class TimerPanel extends JPanel {
 		chronoHandler = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				if (sec < 59) {
 					sec++;
 				} else {
 					sec = 0;
 					min++;
+				}
+				if(game.isSolved()) {
+					timer.stop();
+					chrono.setForeground(G15Colour.tileColourFinished);
 				}
 				time = String.format(timeFormat, min, sec);
 				chrono.setText(time);
@@ -96,7 +104,13 @@ public class TimerPanel extends JPanel {
 		};
 
 		timer = new Timer(1000, chronoHandler);
+		
 		timer.setRepeats(true);
+	}
+
+	public void setGame(Game15 game) {
+		this.game = game;
+		
 	}
 
 }

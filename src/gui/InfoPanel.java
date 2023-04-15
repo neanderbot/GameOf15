@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import logic.Game15;
+
 public class InfoPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private TimerPanel timerPanel;
@@ -50,6 +52,12 @@ public class InfoPanel extends JPanel {
 	public void resetCounter() {
 		counterPanel.resetClickCounter();
 //		counterPanel.repaint();
+		
+	}
+
+	public void setGame(Game15 game) {
+		timerPanel.setGame(game);
+		counterPanel.setGame(game);
 		
 	}
 

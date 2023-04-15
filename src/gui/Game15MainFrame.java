@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 
+import logic.Game15;
+
 public class Game15MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private int width = 500;
@@ -16,9 +18,12 @@ public class Game15MainFrame extends JFrame {
 	private ButtonPanel buttonPanel;
 
 	private InfoPanel infoPanel;
+	
+	private Game15 game;
 
 	public Game15MainFrame() {
 		super("Game of 15");
+		game = new Game15();
 		board = new Board();
 		buttonPanel = new ButtonPanel();
 		infoPanel = new InfoPanel();
@@ -31,6 +36,7 @@ public class Game15MainFrame extends JFrame {
 		setChrono();
 		setReshuffle();
 		setCounterPanelInBoard();
+		setGame();
 
 		this.setPreferredSize(new Dimension(width, heigth));
 		this.setResizable(false);
@@ -39,6 +45,12 @@ public class Game15MainFrame extends JFrame {
 		this.pack();
 		this.setVisible(true);
 
+	}
+
+	private void setGame() {
+		board.setGame(game);
+		infoPanel.setGame(game);
+		
 	}
 
 	private void setCounterPanelInBoard() {

@@ -7,10 +7,13 @@ import java.awt.Graphics;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import logic.Game15;
+
 public class CounterPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private int clickCounter = 0;
 	private JLabel number;
+	private Game15 game;
 
 	public CounterPanel() {
 		setLayout(new BorderLayout());
@@ -66,5 +69,13 @@ public class CounterPanel extends JPanel {
 		clickCounter = 0;
 		number.setText(String.valueOf(clickCounter));
 		repaint();
+	}
+
+	public void setGame(Game15 game) {
+		this.game = game;
+	}
+
+	public void setFinishedColour() {
+		number.setForeground(G15Colour.tileColourFinished);
 	}
 }
