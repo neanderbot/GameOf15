@@ -5,3 +5,5 @@ bin/
 src/tests/
 store/
 src/libs/
+derby.log
+recordsdb/

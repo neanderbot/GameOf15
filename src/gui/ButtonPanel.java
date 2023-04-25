@@ -1,7 +1,7 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.JButton;
@@ -11,30 +11,56 @@ import javax.swing.JPanel;
 public class ButtonPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton reshuffle;
+	private JButton reshuffleButton;
+	private JButton recordsButton;
 
 	public ButtonPanel() {
-		reshuffle = new JButton();
-		formatButton();
-		setLayout(new BorderLayout());
-		add(reshuffle, BorderLayout.CENTER);
+		reshuffleButton = new JButton();
+		recordsButton = new JButton();
+		formatReshuffleButton();
+		formatRecordsButton();
+		setBackground(G15Colour.buttonColour);
+		setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+		add(reshuffleButton);
+//		add(recordsButton);
+		setPreferredSize(new Dimension(100, 50));
 	}
 
-	public JButton getReshuffleButton() {
-		return reshuffle;
-	}
-
-	private void formatButton() {
-		JLabel label = new JLabel("Reshuffle");
-		label.setFont(new Font(Font.SERIF, Font.BOLD, 20));
+	private void formatRecordsButton() {
+		JLabel label = new JLabel("Statistics");
+		label.setFont(new Font(Font.SERIF, Font.BOLD, 30));
 		label.setForeground(G15Colour.bgColour);
 		label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		label.setAlignmentY(JLabel.CENTER_ALIGNMENT);
-		reshuffle.add(label);
-		reshuffle.setBackground(G15Colour.buttonColour);
-		setPreferredSize(new Dimension(200, 50));
+		recordsButton.add(label);
+		recordsButton.setBackground(G15Colour.buttonColour);
+		setPreferredSize(new Dimension(200, 100));
 
-		reshuffle.setBorderPainted(false);
+		recordsButton.setBorderPainted(false);
+		
+	}
+
+	public JButton getReshuffleButton() {
+		return reshuffleButton;
+	}
+
+	private void formatReshuffleButton() {
+		JLabel label = new JLabel("Reshuffle");
+		label.setFont(new Font(Font.SERIF, Font.BOLD, 30));
+		label.setForeground(G15Colour.bgColour);
+		label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		label.setAlignmentY(JLabel.CENTER_ALIGNMENT);
+		reshuffleButton.add(label);
+		reshuffleButton.setBackground(G15Colour.buttonColour);
+		int reshuffleButtonwidth = this.getWidth() / 2;
+		System.out.println(this.getWidth());
+		setPreferredSize(new Dimension(reshuffleButtonwidth, 100));
+
+		reshuffleButton.setBorderPainted(false);
+	}
+
+	public JButton getRecordsButton() {
+		return recordsButton;
 	}
 
 }

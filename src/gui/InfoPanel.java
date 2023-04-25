@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -14,8 +15,8 @@ public class InfoPanel extends JPanel {
 
 	public InfoPanel() {
 		setBackground(G15Colour.bgColour);
-		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-
+//		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 100, 25));
 		counterPanel = new CounterPanel();
 		timerPanel = new TimerPanel();
 

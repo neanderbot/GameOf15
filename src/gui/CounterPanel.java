@@ -68,6 +68,7 @@ public class CounterPanel extends JPanel {
 	public void resetClickCounter() {
 		clickCounter = 0;
 		number.setText(String.valueOf(clickCounter));
+		number.setForeground(G15Colour.timerColour);
 		repaint();
 	}
 

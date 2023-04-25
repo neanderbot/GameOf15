@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import logic.Game15;
+import persistence.DBHandler;
 
 public class TimerPanel extends JPanel {
 
@@ -26,8 +27,7 @@ public class TimerPanel extends JPanel {
 
 	public TimerPanel() {
 
-		setLayout(new BorderLayout());
-//		setBorder(BorderFactory.createLineBorder(Color.red));
+		
 		time = String.format(timeFormat, min, sec);
 
 		chrono = new JLabel(time);
@@ -37,6 +37,7 @@ public class TimerPanel extends JPanel {
 		chrono.setOpaque(true);
 		chrono.setAlignmentX(CENTER_ALIGNMENT);
 
+		setLayout(new BorderLayout());
 		add(chrono, BorderLayout.CENTER);
 
 		setBackground(G15Colour.bgColour);
@@ -77,8 +78,10 @@ public class TimerPanel extends JPanel {
 	public void restartChrono() {
 		min = 0;
 		sec = 0;
+		chrono.setForeground(G15Colour.timerColour);
 		timer.stop();
 		timer.start();
+		repaint();
 	}
 
 	public void setChrono() {
@@ -95,12 +98,15 @@ public class TimerPanel extends JPanel {
 				if(game.isSolved()) {
 					timer.stop();
 					chrono.setForeground(G15Colour.tileColourFinished);
+					
 				}
 				time = String.format(timeFormat, min, sec);
 				chrono.setText(time);
 				repaint();
 
 			}
+
+			
 		};
 
 		timer = new Timer(1000, chronoHandler);
